@@ -28,6 +28,8 @@ struct SearchView: View {
                         Text(currentCat.tags)
                             .bold ()
                         Spacer ()
+                        
+                        
                     }
                     
             

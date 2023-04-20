@@ -23,16 +23,14 @@ struct CatDetailView: View {
         VStack(alignment: .leading) {
             
             HStack {
-                
-                //RemoteImageView(urlOfImageToShow: songToShow.artworkUrl100)
-                
+                RemoteImageView(urlOfImageToShow: catToShow.previewUrl)
+                    
+               
                 VStack(alignment: .leading) {
-                    
-                    Text(catToShow.tags)
-                        .font(.subheadline)
-                    
-                    
-                    
+                    HStack{
+                        
+                    }
+                   
                 }
                 
             }
