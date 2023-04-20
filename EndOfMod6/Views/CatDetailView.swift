@@ -7,14 +7,41 @@
 
 import SwiftUI
 
+// MARK: Stored properties
+
+
+
+// MARK: Computed properties
 struct CatDetailView: View {
+    
+    // Song to show in this view
+    var catToShow: Cat
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack(alignment: .leading) {
+            
+            HStack {
+                
+                //RemoteImageView(urlOfImageToShow: songToShow.artworkUrl100)
+                
+                VStack(alignment: .leading) {
+                    
+                    Text(catToShow.tags)
+                        .font(.subheadline)
+                    
+                    
+                    
+                }
+                
+            }
+        }
     }
 }
 
 struct CatDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CatDetailView()
+        CatDetailView(catToShow: exampleCat)
     }
 }

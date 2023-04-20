@@ -9,10 +9,10 @@ import Foundation
 
 struct Cat: Codable {
     let id: String
-    let tags:[String]
+    let tags:String
     let owner: String
     }
 
 let exampleCat = Cat(id: "rV1MVEh0Af2Bm4O0",
-                     tags:["kitten","several","gif"],
+                     tags:"kitten",
                      owner: "null")

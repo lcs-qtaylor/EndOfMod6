@@ -19,10 +19,11 @@ struct NetworkService {
     // in our app. Since this function might take a while to complete
     // this ensures that other parts of our app (like the user interface)
     // won't "freeze up" while this function does it's job.
-    static func fetch() async -> [Cat] {
+    static func fetch(resultsFor catTag: String) async -> [Cat] {
         
         // 1. Attempt to create a URL from the address provided
-        let endpoint = "https://cataas.com/api/cats?limit=100&skip=0"
+        let endpoint = "https://cataas.com/search?term=\(catTag)&entity=cat&limit=100&skip=0"
+        //h.ttps://cataas.com/search?term=\(catTag)&entity=cat&limit=100&skip=0
         guard let url = URL(string: endpoint) else {
             print("Invalid address for JSON endpoint.")
             return []

@@ -19,12 +19,13 @@ struct SearchView: View {
             
             List (foundCats, id: \.id) { currentCat in
                 
-                NavigationLink(destination: { CatDetailView(catToShow: currentCat)
+                NavigationLink(destination: {
+                    CatDetailView(catToShow: currentCat)
                 }, label: {
                     
                     VStack(alignment: .leading) {
                         
-                        Text (currentCat.tags)
+                        Text(currentCat.tags)
                             .bold ()
                         Spacer ()
                     }
