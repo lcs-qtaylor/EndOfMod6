@@ -8,8 +8,40 @@
 import SwiftUI
 
 struct SearchView: View {
+    // MARK: Stored properties
+    @State var foundCats: [Cat] = []
+    
+    @State var searchText = ""
+    // MARK: Computed properties
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        NavigationView {
+            
+            List (foundCats, id: \.id) { currentCat in
+                
+                NavigationLink(destination: { CatDetailView(catToShow: currentCat)
+                }, label: {
+                    
+                    VStack(alignment: .leading) {
+                        
+                        Text (currentCat.tags)
+                            .bold ()
+                        Spacer ()
+                    }
+                    
+            
+                               })
+            }
+            .navigationTitle("Kitty Browser")
+            .searchable(text: $searchText)
+            .onChange(of: searchText) {newSearchText in
+                
+                Task {
+                    
+                    foundCats = await NetworkService.fetch(resultsFor: searchText)
+                }
+            }
+        }
     }
 }
 

@@ -11,7 +11,7 @@ import SwiftUI
 struct EndOfMod6App: App {
     var body: some Scene {
         WindowGroup {
-            AirQualView()
+            CatDetailView()
         }
     }
 }
