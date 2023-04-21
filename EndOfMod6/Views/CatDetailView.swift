@@ -19,27 +19,36 @@ struct CatDetailView: View {
     
     
     var body: some View {
-        
-        VStack(alignment: .leading) {
-            
-            HStack {
-                RemoteImageView(urlOfImageToShow: catToShow.previewUrl)
-                    
-               
-                VStack(alignment: .leading) {
-                    HStack{
-                        
-                    }
-                   
-                }
+        NavigationView {
+            VStack(alignment: .leading) {
                 
+             
+                    RemoteImageView(urlOfImageToShow: catToShow.previewUrl)
+                    
+                    .padding
+                        Button {
+                            
+                        } label: {
+                            
+                            Text("Favourite")
+                            
+                        }
+                
+                    }
             }
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: HistoryView()) {
+                        Image(systemName: "star.fill").font(.title)
+                            .foregroundColor(.yellow)
+                    }
+                }
         }
     }
-}
-
-struct CatDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        CatDetailView(catToShow: exampleCat)
+    
+    struct CatDetailView_Previews: PreviewProvider {
+        static var previews: some View {
+            CatDetailView(catToShow: exampleCat)
+        }
     }
 }

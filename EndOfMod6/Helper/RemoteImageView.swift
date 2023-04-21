@@ -45,7 +45,7 @@ struct RemoteImageView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        RemoteImageView(urlOfImageToShow: "https://cataas.com/cat/cute")
+        RemoteImageView(urlOfImageToShow: "https://cataas.com/cat")
         
         RemoteImageView(urlOfImageToShow: "")
     }
