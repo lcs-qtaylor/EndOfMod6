@@ -7,12 +7,18 @@
 
 import Foundation
 
-struct Cat:Codable {
+struct Cat:Identifiable {
+    let id = UUID()
     let catId: String
     let tags:String
     let previewUrl: String
     }
 
-let exampleCat = Cat(catId: "rV1MVEh0Af2Bm4O0",
+var exampleCatOne = Cat(catId: "rV1MVEh0Af2Bm4O0",
                      tags:"kitten",
                      previewUrl:"https://cataas.com/cat/kitten")
+
+var exampleCatTwo = Cat(catId: "", tags: "", previewUrl: "")
+
+
+var historyforPreview = [exampleCatOne, exampleCatTwo]

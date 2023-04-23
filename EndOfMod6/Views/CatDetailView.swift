@@ -8,44 +8,45 @@
 import SwiftUI
 struct CatDetailView: View {
     //MARK: Stored properties
-    var catToShow: Cat
-    @State var priorResults: [Cat] = []
+    @Binding var history: [Cat]
+    @State var catId: String = ""
+    @State var previewUrl: String = ""
     //MARK: Computed properties
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 
-                RemoteImageView(urlOfImageToShow: catToShow.previewUrl)
+                RemoteImageView(urlOfImageToShow: previewUrl)
                 
                     .padding
                 
                 Button(action: {
-                    let latestResult = Cat (catId: "rV1MVEh0Af2Bm4O0",
-                                            tags:"kitten",
-                                            previewUrl:"https://cataas.com/cat/kitten")
-                    
-                    Favourites.append(latestResult)
+                    previewUrl = ""
+                    catId = ""
                 }, label: {
-                    Image(systemName: "star.fill")
+                    Text("Next")
+                })
+                
+                Button(action: {
+                    guard let previewUrl = "" else {
+                        return
+                    }
+                    
+                    let Id = String(catId)
+                    
+                    history.append(Favourites(priorResult: Cat))
+                    
+                }, label: {
+                    Text("Save")
                     
                 })
-                .buttonStyle(.bordered)
-                .padding ()
                 
-            }
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: $priorResults.Favourites) {
-                        Image(systemName: "star.fill").font(.title)
-                            .foregroundColor(.yellow)
-                    }
-                }
             }
         }
     }
+}
     struct CatDetailView_Previews: PreviewProvider {
         static var previews: some View {
-            CatDetailView(catToShow: exampleCat)
-        }
+            CatDetailView(history: Binding.constant(historyForPreview))
     }
 }

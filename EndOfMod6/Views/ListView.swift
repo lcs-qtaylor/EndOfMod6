@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct ListView: View {
-    @State var priorResults: [Cat] = []
+    @Binding var history: [Cat]
     var body: some View {
-        List (priorResults.reversed()) { currentCat in
-            HStack {
-                Spacer ( )
-                Favourites(somePriorResult: currentCat)
+        VStack{
+            
+            
+            List (history.reversed()) { priorResult in
+                    Favourites(priorResult: priorResult)
             }
         }
     }
 }
-
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView ([Cat]priorResults: [Cat])
+        ListView(history: Binding.constant(historyForPreview))
     }
 }
