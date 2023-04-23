@@ -11,7 +11,29 @@ import SwiftUI
 struct EndOfMod6App: App {
     var body: some Scene {
         WindowGroup {
-            CatDetailView(catToShow: exampleCat)
+            TabView{
+                
+                CatDetailView(catToShow: exampleCat)
+                    .tabItem {
+                        Image(systemName: "rectangle" )
+                        Text("Rectangle")
+                    }
+                    .toolbar(.visible, for: .tabBar)
+                
+                    .toolbarBackground( Color.black, for: .tabBar)
+                    .tag(1)
+                
+                ListView()
+                    .tabItem {
+                        Image(systemName: "star.fill" )
+                        Text("Favourite")
+                    }
+                    .toolbar(.visible, for: .tabBar)
+                
+                    .toolbarBackground( Color.black, for: .tabBar)
+                    .tag(2)
+                
+            }
         }
     }
 }

@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Cat: Codable {
-    let id: String
+struct Cat:Codable {
+    let catId: String
     let tags:String
     let previewUrl: String
     }
 
-let exampleCat = Cat(id: "rV1MVEh0Af2Bm4O0",
+let exampleCat = Cat(catId: "rV1MVEh0Af2Bm4O0",
                      tags:"kitten",
                      previewUrl:"https://cataas.com/cat/kitten")
